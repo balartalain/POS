@@ -9,8 +9,12 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator screenOptions={{headerShown: false}}>
-      <Drawer.Screen name="Drawer" component={MainStackNavigator} />
+    <Drawer.Navigator>
+      <Drawer.Screen
+        name="Drawer"
+        component={MainStackNavigator}
+        options={{headerShown: false}}
+      />
       <Drawer.Screen name="Details" component={DetailsScreen} />
     </Drawer.Navigator>
   );
