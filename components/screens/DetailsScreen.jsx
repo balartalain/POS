@@ -15,7 +15,7 @@ function DetailsScreen({navigation}) {
         />
         <Button
           title="Go to Home"
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Drawer')}
         />
         <Button title="Go back" onPress={() => navigation.goBack()} />
       </Block>

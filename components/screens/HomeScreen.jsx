@@ -1,9 +1,7 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {Block, Text, Button, theme} from 'galio-framework';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 const HomeScreen = ({navigation}) => {
-  const insets = useSafeAreaInsets();
   return (
     <Block flex>
       <StatusBar

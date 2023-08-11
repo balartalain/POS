@@ -1,24 +1,15 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
-import GalioApp from './components/GalioApp';
+import DrawerNavigator from './components/navigation/DrawerNavigator';
 
 //import theme from './src/theme';
 function App(): JSX.Element {
-  return <GalioApp />;
+  return (
+    <NavigationContainer>
+      <DrawerNavigator />
+    </NavigationContainer>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'yellow',
-  },
-});
 export default App;
