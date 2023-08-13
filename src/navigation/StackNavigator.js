@@ -1,13 +1,14 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, Platform, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import {Block, Text, Button, theme} from 'galio-framework';
 import HomeScreen from '../screens/HomeScreen';
 import DetailsScreen from '../screens/DetailsScreen';
-
+import PosScreen from '../screens/PosScreen';
 const Stack = createNativeStackNavigator();
-
+const HeaderLeft = ({route}) => {
+  return <TouchableOpacity />;
+};
 const MainStackNavigator = ({navigation}) => {
   return (
     <Stack.Navigator
@@ -17,19 +18,22 @@ const MainStackNavigator = ({navigation}) => {
           backgroundColor: theme.COLORS.PRIMARY,
         },
         headerTintColor: '#fff',
+        animation: 'slide_from_right',
       }}>
       <Stack.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => navigation.toggleDrawer()}
-              style={styles.headerLeft}>
-              <FontAwesome6 name="bars" size={23} color="#fff" />
-            </TouchableOpacity>
-          ),
+          headerShown: false,
         }}
+      />
+      <Stack.Screen
+        name="POS"
+        component={PosScreen}
+        options={({route}) => ({
+          headerBackVisible: false,
+          headerLeft: HeaderLeft,
+        })}
       />
       <Stack.Screen name="Details" component={DetailsScreen} />
     </Stack.Navigator>
@@ -37,11 +41,3 @@ const MainStackNavigator = ({navigation}) => {
 };
 
 export default MainStackNavigator;
-const styles = StyleSheet.create({
-  headerLeft: {
-    marginRight: 15,
-  },
-  container: {
-    flex: 1,
-  },
-});
