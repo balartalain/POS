@@ -1,9 +1,8 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, Keyboard} from 'react-native';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {Block, Text, Button, theme} from 'galio-framework';
-import Searchbar from 'react-native-dynamic-search-bar';
 import ProductList from '../ProductList';
 const headerLeft = ({navigation}) => {
   return () => {
@@ -74,14 +73,7 @@ const PosScreen = ({navigation}) => {
       <Block style={styles.toPayContainer}>
         <Block style={styles.toPay} />
       </Block>
-      <Block style={styles.searchProductContainer}>
-        <Searchbar
-          onChangeText={text => {
-            console.log(text);
-          }}
-          style={{borderRadius: 0}}
-        />
-      </Block>
+      <Block style={styles.searchProductContainer} />
       <Block style={styles.productListContainer}>
         <ProductList />
         <Button onPress={() => navigation.navigate('Details')}>
