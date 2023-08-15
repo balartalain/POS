@@ -3,7 +3,8 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {Block, Text, Button, theme} from 'galio-framework';
-
+import Searchbar from 'react-native-dynamic-search-bar';
+import ProductList from '../ProductList';
 const headerLeft = ({navigation}) => {
   return () => {
     return (
@@ -17,7 +18,7 @@ const headerLeft = ({navigation}) => {
 };
 const HeaderQtyProducts = () => {
   return (
-    <Block width={35} height={33} style={headerQtyProductsStyles.container}>
+    <Block width={30} height={28} style={headerQtyProductsStyles.container}>
       <Block flex={0.9} style={headerQtyProductsStyles.inner}>
         <Text color={'white'}>1</Text>
       </Block>
@@ -43,7 +44,9 @@ const headerTitle = props => {
     return (
       <TouchableOpacity>
         <Block flex row style={headerTitleStyles.container}>
-          <Text color={'white'}>VENTA</Text>
+          <Text p bold color={'white'}>
+            Venta
+          </Text>
           <HeaderQtyProducts />
         </Block>
       </TouchableOpacity>
@@ -67,11 +70,24 @@ const PosScreen = ({navigation}) => {
     });
   }, [navigation]);
   return (
-    <Block flex>
-      <Text>Pos Screen e</Text>
-      <Button onPress={() => navigation.navigate('Details')}>
-        Got to Details screen
-      </Button>
+    <Block flex={1} style={{backgroundColor: 'yellow'}}>
+      <Block style={styles.toPayContainer}>
+        <Block style={styles.toPay} />
+      </Block>
+      <Block style={styles.searchProductContainer}>
+        <Searchbar
+          onChangeText={text => {
+            console.log(text);
+          }}
+          style={{borderRadius: 0}}
+        />
+      </Block>
+      <Block style={styles.productListContainer}>
+        <ProductList />
+        <Button onPress={() => navigation.navigate('Details')}>
+          Got to Details screen
+        </Button>
+      </Block>
     </Block>
   );
 };
@@ -82,6 +98,17 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  toPayContainer: {
+    flex: 0.3,
+    backgroundColor: 'blue',
+  },
+  searchProductContainer: {
+    backgroundColor: 'red',
+  },
+  productListContainer: {
+    flex: 1,
+    backgroundColor: 'green',
   },
 });
 export default PosScreen;
