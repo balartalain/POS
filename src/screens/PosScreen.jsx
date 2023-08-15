@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    height: verticalScale(110),
+    height: 80,
   },
   toPay: {
     flexDirection: 'row',
