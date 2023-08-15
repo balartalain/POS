@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Keyboard} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {Block, Text, Button, theme} from 'galio-framework';
@@ -86,18 +86,7 @@ const PosScreen = ({navigation}) => {
           </Text>
         </TouchableOpacity>
       </Block>
-      <Block style={styles.searchProductContainer}>
-        <Searchbar
-          updateSearch={text => console.log(text)}
-          onClear={() => Keyboard.dismiss()}
-        />
-      </Block>
-      <Block style={styles.productListContainer}>
-        <ProductList />
-        <Button onPress={() => navigation.navigate('Details')}>
-          Got to Details screen
-        </Button>
-      </Block>
+      <ProductList />
     </Block>
   );
 };
