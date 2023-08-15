@@ -4,6 +4,12 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {Block, Text, Button, theme} from 'galio-framework';
 import ProductList from '../ProductList';
+import Searchbar from '../SearchBar';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../helpers/Metrics';
 const headerLeft = ({navigation}) => {
   return () => {
     return (
@@ -69,11 +75,23 @@ const PosScreen = ({navigation}) => {
     });
   }, [navigation]);
   return (
-    <Block flex={1} style={{backgroundColor: 'yellow'}}>
+    <Block flex={1}>
       <Block style={styles.toPayContainer}>
-        <Block style={styles.toPay} />
+        <TouchableOpacity style={styles.toPay}>
+          <Text h4 color={'white'}>
+            A pagar
+          </Text>
+          <Text h3 color={'white'}>
+            100.00
+          </Text>
+        </TouchableOpacity>
       </Block>
-      <Block style={styles.searchProductContainer} />
+      <Block style={styles.searchProductContainer}>
+        <Searchbar
+          updateSearch={text => console.log(text)}
+          onClear={() => Keyboard.dismiss()}
+        />
+      </Block>
       <Block style={styles.productListContainer}>
         <ProductList />
         <Button onPress={() => navigation.navigate('Details')}>
@@ -92,11 +110,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   toPayContainer: {
-    flex: 0.3,
+    //flex: 0.15,
     backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: verticalScale(110),
+  },
+  toPay: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    height: '70%',
+    width: '70%',
+    //paddingLeft: 10,
+    //paddingRight: 10,
+    backgroundColor: theme.COLORS.DARK_PRIMARY,
   },
   searchProductContainer: {
-    backgroundColor: 'red',
+    //flex: 0.1,
+    height: verticalScale(70),
   },
   productListContainer: {
     flex: 1,
