@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     height: '70%',
-    width: '70%',
+    width: '80%',
     //paddingLeft: 10,
     //paddingRight: 10,
     backgroundColor: theme.COLORS.DARK_PRIMARY,
